@@ -19,7 +19,7 @@ import static creators.RandomGenerator.*;
 /**
  * Проверить:
  * Успешную регистрацию.
- * Минимальный пароль — шесть символов.
+ * Ошибку для некорректного пароля. Минимальный пароль — шесть символов.
  */
 
 @RunWith(Parameterized.class)
@@ -68,7 +68,7 @@ public class RegisterPageTests extends User{
         registerPage.registration(name, email, password);
         loginedUser = loginUser(name, email, password);
         Assert.assertEquals(isSuccessfulRegistration, loginPage.isLoginPage());
-        if(password.length()<6 ) {
+        if(password.length() < 6) {
             Assert.assertTrue(registerPage.isDisplayedRegisterPasswordError());
         }
     }

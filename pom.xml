@@ -77,7 +77,7 @@
                     <parallel>classes</parallel>
                     <useUnlimitedThreads>false</useUnlimitedThreads>
                     <perCoreThreadCount>false</perCoreThreadCount>
-                    <threadCountClasses>2</threadCountClasses>
+                    <threadCountClasses>1</threadCountClasses>
                 </configuration>
                 <dependencies>
                     <dependency>

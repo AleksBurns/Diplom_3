@@ -26,23 +26,17 @@ public class WebDriverCreator {
         }
     }
 
-    private static WebDriver createChromeDriver(){
+    private static WebDriver createChromeDriver() {
         ChromeOptions options = new ChromeOptions();
         return new ChromeDriver(options);
     }
-//    private static WebDriver createYandexDriver(){
-//        System.setProperty("webdriver.chrome.driver", "src/main/resources/yandexdriver.exec");
-//        ChromeOptions options = new ChromeOptions();
-//        options.setBinary(System.getenv("/Applications/Yandex.app/Contents/MacOS/Yandex"));
-//        return new ChromeDriver(options);
-//    }
 
-    private static WebDriver createYandexDriver(){
+    private static WebDriver createYandexDriver() {
         System.setProperty("webdriver.chrome.driver",
-            String.format("%s/%s", System.getenv("/Users/aleksburns/WebDriver/bin"),
-                System.getenv( "yandexdriver.exec")));
+                String.format("%s/%s", System.getenv("WEBDRIVERS"),
+                        System.getenv("YANDEX_BROWSER_DRIVER_FILENAME")));
         ChromeOptions options = new ChromeOptions();
-        options.setBinary(System.getenv("/Applications/Yandex.app/Contents/MacOS/Yandex"));
+        options.setBinary(System.getenv("YANDEX_BROWSER_PATH"));
         return new ChromeDriver(options);
     }
 }
