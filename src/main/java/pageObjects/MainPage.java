@@ -18,12 +18,9 @@ public class MainPage {
     private final By mainLoginButton = By.xpath(".//button[text()='Войти в аккаунт']");
     private final By mainCreateOrderButton = By.xpath(".//*[text() = 'Оформить заказ']");
     //Раздел конструктора
-    private final By mainBunsButton = By.xpath(".//span[text()='Булки']");
-    private final By mainSaucesButton = By.xpath(".//span[text()='Соусы']");
-    private final By mainFillingsButton = By.xpath(".//span[text() ='Начинки']");
-    private final By mainBunsSection = By.xpath(".//*[@class = 'text text_type_main-medium mb-6 mt-10' and text()='Булки']");
-    private final By mainSaucesSection = By.xpath(".//*[@class = 'text text_type_main-medium mb-6 mt-10' and text()='Соусы']");
-    private final By mainFillingsSection = By.xpath(".//*[@class = 'text text_type_main-medium mb-6 mt-10' and text()='Начинки']");
+    private final By mainBuns = By.xpath(".//span[text()='Булки']//parent::div");
+    private final By mainSauces = By.xpath(".//span[text()='Соусы']//parent::div");
+    private final By mainFillings = By.xpath(".//span[text()='Начинки']//parent::div");
 
     @Step("Ожидание загрузки главной страницы")
     public void waitToLoadMainPageName() {
@@ -45,26 +42,29 @@ public class MainPage {
     }
     @Step("Клик по кнопке 'Булки'")
     public void mainBunsButtonClick(){
-        driver.findElement(mainBunsButton).click();
+        driver.findElement(mainBuns).click();
     }
     @Step("Клик по кнопке 'Соусы'")
     public void mainSaucesButtonClick(){
-        driver.findElement(mainSaucesButton).click();
+        driver.findElement(mainSauces).click();
     }
     @Step("Клик по кнопке 'Начинки'")
     public void mainFillingsButtonClick(){
-        driver.findElement(mainFillingsButton).click();
+        driver.findElement(mainFillings).click();
     }
     @Step("Отображение раздела 'Булки'")
-    public void isDisplayedMainBunsSection(){
-        new WebDriverWait(driver, Duration.ofSeconds(5)).until(driver -> driver.findElement(mainBunsSection).isDisplayed());
+    public boolean isDisplayedMainBunsSection(){
+        String bunsClass = driver.findElement(mainBuns).getAttribute("class");
+        return bunsClass != null && bunsClass.contains("current");
     }
     @Step("Отображение раздела 'Соусы'")
-    public void isDisplayedMainSaucesSection(){
-        new WebDriverWait(driver, Duration.ofSeconds(5)).until(driver -> driver.findElement(mainSaucesSection).isDisplayed());
+    public boolean isDisplayedMainSaucesSection(){
+        String saucesClass = driver.findElement(mainSauces).getAttribute("class");
+        return saucesClass != null && saucesClass.contains("current");
     }
     @Step("Отображение раздела 'Начинки'")
-    public void isDisplayedMainFillingsSection(){
-        new WebDriverWait(driver, Duration.ofSeconds(5)).until(driver -> driver.findElement(mainFillingsSection).isDisplayed());
+    public boolean isDisplayedMainFillingsSection(){
+        String fillingsClass = driver.findElement(mainFillings).getAttribute("class");
+        return fillingsClass != null && fillingsClass.contains("current");
     }
 }

@@ -1,5 +1,6 @@
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -32,21 +33,21 @@ public class MainPageTests {
     public void checkBunsSection() {
         mainPage.mainSaucesButtonClick();
         mainPage.mainBunsButtonClick();
-        mainPage.isDisplayedMainBunsSection();
+        Assert.assertTrue(mainPage.isDisplayedMainBunsSection());
     }
 
     @Test
     @DisplayName("При клике на кнопку 'Соусы' отображается раздел с соусами")
     public void checkSaucesSection() {
         mainPage.mainSaucesButtonClick();
-        mainPage.isDisplayedMainSaucesSection();
+        Assert.assertTrue(mainPage.isDisplayedMainSaucesSection());
     }
 
     @Test
     @DisplayName("При клике на кнопку 'Начинки' отображается раздел с начинками")
     public void checkFillingSection() {
         mainPage.mainFillingsButtonClick();
-        mainPage.isDisplayedMainFillingsSection();
+        Assert.assertTrue(mainPage.isDisplayedMainFillingsSection());
     }
 
     @After
